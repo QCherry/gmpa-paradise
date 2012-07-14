@@ -2,6 +2,7 @@
 
 -- Author & Contributors: QCherry, VOID
 local version = "0.1"
+local gmname = "GMPA-Paradise"
 local mysqlhost = "localhost"
 local mysqlusername = "username"
 local mysqlpass = "pass"
@@ -17,7 +18,7 @@ function InitGamemode()
 		end
 		--End MySQL
 		-- GameMode config
-		SetGamemodeName("GMPA-Paradise",version);
+		SetGamemodeName(string.format("%s %s",gmname,version));
 		EnableChat(0);
 		-- End GameMode config
 end
