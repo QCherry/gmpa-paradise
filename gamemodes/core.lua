@@ -35,7 +35,7 @@ function guiCharacter(playerid)
 		local TimerDraws = SetTimerEx("guiCharacterUpdate" , 4000 , 1 , playerid);
 end
 
-function guiCharacterUpdate(playerid)
+function guiCharacterUpdate(playerid) -- tu jak dam playerid serwer crashuje jak ubiore jakas bron i po 4 sek
 		UpdateDraw(testowyRysunek , 6500 , 400 , string.format("%s %s" , "Character :" , name) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
 		UpdateDraw(Rysunekid , 6500 , 600 , string.format("%s %s" , "ID :" , playerid), "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
 		UpdateDraw(RysunekBron , 6500 , 800 , infooxx , "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
