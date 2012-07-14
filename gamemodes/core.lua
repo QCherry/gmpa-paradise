@@ -26,7 +26,8 @@ function guiCharacter(playerid)
 		name = GetPlayerName(playerid);
 		local testowyRysunek = CreateDraw(6500,400 , string.format("%s %s" , "Character :" , name) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
 		ShowDraw(playerid , testowyRysunek);
-		local Rysunekid = CreateDraw(6500 , 600 , string.format("%s %s" , "ID :" , playerid), "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
+		level = GetPlayerLevel(playerid);
+		local Rysunekid = CreateDraw(6500 , 600 , string.format("%s %d" , "Level :" , level), "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
 		ShowDraw(playerid , Rysunekid);
 		weaponmode = GetEquippedMeleeWeapon(playerid);
 		local infooxx = string.format("%s %s" , "Weapon :" , weaponmode);
