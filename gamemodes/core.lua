@@ -4,7 +4,7 @@
 local version = "0.1"
 local gmname = "GMPA-Paradise"
 local mysqlhost = "localhost"
-local mysqlusername = "username"
+local mysqlusername = "username" --- Zapamitać, zrobić wczytywanie z configu
 local mysqlpass = "pass"
 local databasedb = "db"
 
@@ -24,21 +24,24 @@ function InitGamemode()
 end
 function guiCharacter(playerid)
 		name = GetPlayerName(playerid);
-		local testowyRysunek = CreateDraw(6500,400 , string.format("%s %s" , "Character :" , name) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
+		local NameDraw = CreateDraw(6500,400 , string.format("%s %s" , "Character :" , name) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
 		ShowDraw(playerid , testowyRysunek);
-		local Rysunekid = CreateDraw(6500 , 600 , string.format("%s %s" , "ID :" , playerid), "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
+		local IdDraw = CreateDraw(6500 , 600 , string.format("%s %s" , "ID :" , playerid), "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
 		ShowDraw(playerid , Rysunekid);
 		weaponmode = GetEquippedMeleeWeapon(playerid);
-		local infooxx = string.format("%s %s" , "Weapon :" , weaponmode);
-		local RysunekBron = CreateDraw(6500 , 800 , infooxx , "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
+		linfooxx = string.format("%s %s" , "Weapon :" , weaponmode);
+		local WeaponDraw = CreateDraw(6500 , 800 , infooxx , "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
 		ShowDraw(playerid , RysunekBron);
 		local TimerDraws = SetTimerEx("guiCharacterUpdate" , 4000 , 1 , playerid);
 end
 
-function guiCharacterUpdate(playerid) -- tu jak dam playerid serwer crashuje jak ubiore jakas bron i po 4 sek
-		UpdateDraw(testowyRysunek , 6500 , 400 , string.format("%s %s" , "Character :" , name) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
-		UpdateDraw(Rysunekid , 6500 , 600 , string.format("%s %s" , "ID :" , playerid), "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
-		UpdateDraw(RysunekBron , 6500 , 800 , infooxx , "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
+function guiCharacterUpdate(playerid) -- Dobra poprawiłem :-)
+		name = GetPlayerName(playerid);
+		weaponmode = GetEquippedMeleeWeapon(playerid);
+		linfooxx = string.format("%s %s" , "Weapon :" , weaponmode);
+		UpdateDraw(NameDraw , 6500 , 400 , string.format("%s %s" , "Character :" , name) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
+		UpdateDraw(IdDraw , 6500 , 600 , string.format("%s %s" , "ID :" , playerid), "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
+		UpdateDraw(WeaponDraw , 6350 , 800 , infooxx , "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
 end
 function OnGamemodeInit()
 	print("------------------------------------------------------");
