@@ -23,7 +23,7 @@ function InitGamemode()
 		-- End GameMode config
 end
 function guiCharacter()
-		local name = GetPlayerName(playerid);
+		name = GetPlayerName(playerid);
 		local testowyRysunek = CreateDraw(6500,400 , string.format("%s %s" , "Character :" , name) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
 		ShowDraw(playerid , testowyRysunek);
 		local Rysunekid = CreateDraw(6500 , 600 , string.format("%s %s" , "ID :" , playerid), "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
@@ -32,6 +32,13 @@ function guiCharacter()
 		local infooxx = string.format("%s %d" , "Weapon :" , weaponmode);
 		local RysunekBron = CreateDraw(6500 , 800 , infooxx , "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
 		ShowDraw(playerid , RysunekBron);
+end
+local TimerDraws = SetTimerEx("guiCharacterUpdate" , 4000 , 1 , playerid);
+
+function guiCharacterUpdate()
+		UpdateDraw(testowyRysunek , 6500 , 400 , string.format("%s %s" , "Character :" , name) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
+		UpdateDraw(Rysunekid , 6500 , 600 , string.format("%s %s" , "ID :" , playerid), "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
+		UpdateDraw(RysunekBron , 6500 , 800 , infooxx , "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
 end
 function OnGamemodeInit()
 	print("------------------------------------------------------");
