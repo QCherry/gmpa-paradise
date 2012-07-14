@@ -18,6 +18,7 @@ function InitGamemode()
 		--End MySQL
 		-- GameMode config
 		SetGamemodeName("GMPA-Paradise",version);
+		EnableChat(0);
 		-- End GameMode config
 end
 function guiCharacter()
