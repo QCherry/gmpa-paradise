@@ -2,6 +2,7 @@
 
 -- Author & Contributors: QCherry, VOID
 local version = "0.1"
+local servername = "GMPA Paradise RP"
 local gmname = "GMPA-Paradise"
 local mysqlhost = "localhost"
 local mysqlusername = "username"
@@ -10,8 +11,8 @@ local databasedb = "db"
 
 function InitGamemode()
 		--MySQL
-		mysql_connect(mysqlhost, mysqlusername, mysqlpass, databasedb);
-		if ( not handler ) then
+		local conmysql = mysql_connect(mysqlhost, mysqlusername, mysqlpass, databasedb);
+		if ( not conmysql ) then
 					print("         Unable to connect mysql           ");
 				else
 					print("         Connected to MySQL          ");
@@ -23,27 +24,24 @@ function InitGamemode()
 		-- End GameMode config
 end
 function guiCharacter(playerid)
-		name = GetPlayerName(playerid);
-		local testowyRysunek = CreateDraw(6500,400 , string.format("%s %s" , "Character :" , name) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
+		local servernmd = CreateDraw(6500,200 , string.format("%s" , servername) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
+		ShowDraw(playerid , servernmd);
+		local testowyRysunek = CreateDraw(6500,400 , string.format("%s" , "|Character: ") , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
 		ShowDraw(playerid , testowyRysunek);
+		name = GetPlayerName(playerid);
+		local usern = CreateDraw(6500,600 , string.format("%s%s" , "|",name) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
+		ShowDraw(playerid , usern);
 		level = GetPlayerLevel(playerid);
-		local Rysunekid = CreateDraw(6500 , 600 , string.format("%s %d" , "Level :" , level), "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
+		local Rysunekid = CreateDraw(6500 , 800 , string.format("%s %d" , "|Level: " , level), "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
 		ShowDraw(playerid , Rysunekid);
-		weaponmode = GetEquippedMeleeWeapon(playerid);
-		local infooxx = string.format("%s %s" , "Weapon :" , weaponmode);
-		local RysunekBron = CreateDraw(6500 , 800 , infooxx , "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
-		ShowDraw(playerid , RysunekBron);
-		local TimerDraws = SetTimerEx("guiCharacterUpdate" , 4000 , 1 , playerid);
+		nxtlvl = GetPlayerExperienceNextLevel(playerid);
+		local instancee = CreateDraw(6500,1000 , string.format("%s %s" , "|Next LVL:" , nxtlvl) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
+		ShowDraw(playerid , instancee);
+		local linee = "|";
+		local line = CreateDraw(6500,1200 , string.format("%s %s" , "|______________________________" , linee) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
+		ShowDraw(playerid , line)
 end
 
-function guiCharacterUpdate()
-		name = GetPlayerName(playerid);
-		level = GetPlayerLevel(playerid);
-		weaponmode = GetEquippedMeleeWeapon(playerid);
-		UpdateDraw(testowyRysunek , 6500 , 400 , string.format("%s %s" , "Character :" , name) , "Font_Old_10_White_Hi.TGA" ,236 , 236 , 236);
-		UpdateDraw(Rysunekid , 6500 , 600 , string.format("%s %d" , "Level :" , level), "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
-		UpdateDraw(RysunekBron , 6500 , 800 , infooxx , "Font_Old_10_White_Hi.TGA" , 236 , 236 , 236);
-end
 function OnGamemodeInit()
 	print("------------------------------------------------------");
 	print("Loading GMPA-Paradise 0.1 for Gothic Multiplayer: Accrescere");
