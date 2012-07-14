@@ -41,5 +41,5 @@ function OnGamemodeInit()
 end
 
 function OnPlayerSpawn(playerid)
-guiCharacter()
+	guiCharacter();
 end
