@@ -15,12 +15,12 @@ local MaxPlayers = 100;
 local Player = {};
 
 function InitGamemode()
-   --pêtla
+   --pï¿½tla
    for i = 0, MaxPlayers - 1 do
                 Player[i] = {};
                 Player[i].loggedIn = nil;
    end
-   -- end pêtla
+   -- end pï¿½tla
 		--MySQL
 		
 		--local conmysql = mysql_connect(mysqlhost, mysqlusername, mysqlpass, databasedb);
@@ -197,6 +197,7 @@ function CMD_Register(playerid,params)
                         Player[playerid].loggedIn = 1;
                         SendPlayerMessage(playerid,230,230,230,"You've completed your registration successfully!");
                         FreezePlayer(playerid,0);
+                        guiCharacter(playerid);
                 end
         else
                 SendPlayerMessage(playerid,230,230,230,"Use: /register (password)");
